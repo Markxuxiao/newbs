@@ -1,0 +1,111 @@
+<!--{if $_G['uid']}-->
+<ul class="nav navbar-nav m-n hidden-xs nav-user user">
+  <li class="hidden-xs">
+    <a href="#" class="dropdown-toggle lt" data-toggle="dropdown">
+      <i class="icon-bell"></i>
+      <span class="badge badge-sm up bg-danger count">2</span>
+    </a>
+    <section class="dropdown-menu aside-xl animated fadeInUp">
+      <section class="panel bg-white">
+        <div class="panel-heading b-light bg-light">
+          <strong>You have <span class="count">$_G[member][newprompt]</span> notifications</strong>
+        </div>
+        <div class="list-group list-group-alt">
+          <ul class="p_pop" >
+            <li><a href="home.php?mod=space&do=pm" id="pm_ntc" style="background-repeat: no-repeat; background-position: 0 50%;"><em class="prompt_news{if empty($_G[member][newpm])}_0{/if}"></em>{lang pm_center}</a></li>
+            <li><a href="home.php?mod=follow&do=follower"><em class="prompt_follower{if empty($_G[member][newprompt_num][follower])}_0{/if}"></em><!--{lang notice_interactive_follower}-->{if $_G[member][newprompt_num][follower]}($_G[member][newprompt_num][follower]){/if}</a></li>
+            <!--{if $_G[member][newprompt] && $_G[member][newprompt_num][follow]}-->
+              <li><a href="home.php?mod=follow"><em class="prompt_concern"></em><!--{lang notice_interactive_follow}-->($_G[member][newprompt_num][follow])</a></li>
+            <!--{/if}-->
+            <!--{if $_G[member][newprompt]}-->
+              <!--{loop $_G['member']['category_num'] $key $val}-->
+                <li><a href="home.php?mod=space&do=notice&view=$key"><em class="notice_$key"></em><!--{echo lang('template', 'notice_'.$key)}-->(<span class="rq">$val</span>)</a></li>
+              <!--{/loop}-->
+            <!--{/if}-->
+            <!--{if empty($_G['cookie']['ignore_notice'])}-->
+              <li class="ignore_noticeli"><a href="javascript:;" onclick="setcookie('ignore_notice', 1);hideMenu('myprompt_menu')" title="{lang temporarily_to_remind}"><em class="ignore_notice"></em></a></li>
+            <!--{/if}-->
+          </ul>
+          <!-- <a href="#" class="media list-group-item">
+            <span class="pull-left thumb-sm">
+              <img src="template/newbs/static/images/a0.png" alt="..." class="img-circle">
+            </span>
+            <span class="media-body block m-b-none">
+              Use awesome animate.css<br>
+              <small class="text-muted">10 minutes ago</small>
+            </span>
+          </a>
+          <a href="#" class="media list-group-item">
+            <span class="media-body block m-b-none">
+              1.0 initial released<br>
+              <small class="text-muted">1 hour ago</small>
+            </span>
+          </a> -->
+        </div>
+        <div class="panel-footer text-sm">
+          <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
+          <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+        </div>
+      </section>
+    </section>
+  </li>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+      <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+        <!--{avatar($_G[uid],small)}-->
+      </span>
+      {$_G[member][username]} <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu animated fadeInRight">
+    <!--{if $_G['uid']}-->
+        <li>
+          <span class="arrow top"></span>
+          <a href="home.php?mod=spacecp">{lang setup}</a>
+        </li>
+        <li>
+          <a href="forum.php?mod=guide&view=my">{lang mypost}</a>
+        </li>
+        <li>
+          <a href="home.php?mod=space&do=favorite&view=me">{lang favorite}</a>
+        </li>
+        <li>
+          <a href="home.php?mod=space&do=friend">{lang friends}</a>
+        </li>
+        <!--{hook/global_myitem_extra}-->
+        
+
+    <!--{/if}-->            
+      
+      
+      <!--{if ($_G['group']['allowmanagearticle'] || $_G['group']['allowpostarticle'] || $_G['group']['allowdiy'] || getstatus($_G['member']['allowadmincp'], 4) || getstatus($_G['member']['allowadmincp'], 6) || getstatus($_G['member']['allowadmincp'], 2) || getstatus($_G['member']['allowadmincp'], 3))}-->
+      <li>
+        <a href="portal.php?mod=portalcp"><!--{if $_G['setting']['portalstatus'] }-->{lang portal_manage}<!--{else}-->{lang portal_block_manage}<!--{/if}--></a>
+      </li>
+      <!--{/if}-->
+      <!--{if $_G['uid'] && $_G['group']['radminid'] > 1}-->
+      <li>
+        <a href="forum.php?mod=modcp&fid=$_G[fid]" target="_blank">{lang forum_manager}</a>  
+      </li>
+      <!--{/if}-->
+
+      <!--{if $_G['uid'] && getstatus($_G['member']['allowadmincp'], 1)}-->
+        <li>
+          <a href="admin.php" target="_blank">{lang admincp}</a>
+        </li>
+      <!--{/if}-->
+
+        <a href="#">
+          <!--{if $_G[member][newprompt]}-->
+          <span class="badge bg-danger pull-right">$_G[member][newprompt]</span>
+          <!--{/if}-->
+        </a>
+      </li>
+
+      <li class="divider"></li>
+      <li>
+        <a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">{lang logout}</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+<!--{/if}-->
