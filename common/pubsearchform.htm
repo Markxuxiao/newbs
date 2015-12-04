@@ -1,0 +1,30 @@
+
+
+<form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search" id="scbar_form" method="{if $_G[fid] && !empty($searchparams[url])}get{else}post{/if}" autocomplete="off" onsubmit="searchFocus($('scbar_txt'))" action="{if $_G[fid] && !empty($searchparams[url])}$searchparams[url]{else}search.php?searchsubmit=yes{/if}" target="_blank">
+	<input type="hidden" name="mod" id="scbar_mod" value="search" />
+	<input type="hidden" name="formhash" value="{FORMHASH}" />
+	<input type="hidden" name="srchtype" value="title" />
+	<input type="hidden" name="srhfid" value="$_G[fid]" />
+	<input type="hidden" name="srhlocality" value="$_G['basescript']::{CURMODULE}" />
+	<!--{if !empty($searchparams[params])}-->
+		<!--{loop $searchparams[params] $key $value}-->
+		<!--{eval $srchotquery .= '&' . $key . '=' . rawurlencode($value);}-->
+		<input type="hidden" name="$key" value="$value" />
+		<!--{/loop}-->
+		<input type="hidden" name="source" value="discuz" />
+		<input type="hidden" name="fId" id="srchFId" value="$_G[fid]" />
+		<input type="hidden" name="q" id="cloudsearchquery" value="" />
+	<!--{/if}-->
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-sm bg-white btn-icon rounded" name="searchsubmit" id="scbar_btn" sc="1"  value="true"><i class="fa fa-search"></i></button>
+            </span>
+            <input type="text" class="form-control input-sm no-border rounded" placeholder="Search ..." name="srchtxt" id="scbar_txt" value="{lang enter_content}" autocomplete="off" x-webkit-speech speech >
+          </div>
+        </div>
+      </form>
+<script type="text/javascript">
+	initSearchmenu('scbar', '$searchparams[url]');
+</script>
+

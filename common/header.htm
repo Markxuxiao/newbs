@@ -43,6 +43,60 @@
 
 <body class="">
   <section class="vbox">
+    <!-- diy控制 -->
+    <!--{if $_G['uid'] && getstatus($_G['member']['allowadmincp'], 1)}-->
+    <div id="append_parent"></div><div id="ajaxwaitid"></div>
+    <!--{if $_GET['diy'] == 'yes' && check_diy_perm($topic)}-->
+      <!--{template common/header_diy}-->
+    <!--{/if}-->
+    <!--{if check_diy_perm($topic)}-->
+      <!--{template common/header_diynav}-->
+    <!--{/if}-->
+    <!--{if CURMODULE == 'topic' && $topic && empty($topic['useheader']) && check_diy_perm($topic)}-->
+      $diynav
+    <!--{/if}-->
+    <!--{if empty($topic) || $topic['useheader']}-->
+      <!--{if $_G['setting']['mobile']['allowmobile'] && (!$_G['setting']['cacheindexlife'] && !$_G['setting']['cachethreadon'] || $_G['uid']) && ($_GET['diy'] != 'yes' || !$_GET['inajax']) && ($_G['mobile'] != '' && $_G['cookie']['mobile'] == '' && $_GET['mobile'] != 'no')}-->
+        <div class="xi1 bm bm_c">
+            {lang your_mobile_browser}<a href="{$_G['siteurl']}forum.php?mobile=yes">{lang go_to_mobile}</a> <span class="xg1">|</span> <a href="$_G['setting']['mobile']['nomobileurl']">{lang to_be_continue}</a>
+        </div>
+      <!--{/if}-->
+      <!--{if $_G['setting']['shortcut'] && $_G['member'][credits] >= $_G['setting']['shortcut']}-->
+        <div id="shortcut">
+          <span><a href="javascript:;" id="shortcutcloseid" title="{lang close}">{lang close}</a></span>
+          {lang shortcut_notice}
+          <a href="javascript:;" id="shortcuttip">{lang shortcut_add}</a>
+
+        </div>
+        <script type="text/javascript">setTimeout(setShortcut, 2000);</script>
+      <!--{/if}-->
+      <div id="toptb" class="cl">
+        <!--{hook/global_cpnav_top}-->
+        <div class="wp">
+          <div class="z">
+            <!--{loop $_G['setting']['topnavs'][0] $nav}-->
+              <!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->$nav[code]<!--{/if}-->
+            <!--{/loop}-->
+            <!--{hook/global_cpnav_extra1}-->
+          </div>
+          <div class="y">
+            <a id="switchblind" href="javascript:;" onclick="toggleBlind(this)" title="{lang switch_blind}" class="switchblind">{lang switch_blind}</a>
+            <!--{hook/global_cpnav_extra2}-->
+            <!--{loop $_G['setting']['topnavs'][1] $nav}-->
+              <!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->$nav[code]<!--{/if}-->
+            <!--{/loop}-->
+            <!--{if empty($_G['disabledwidthauto']) && $_G['setting']['switchwidthauto']}-->
+              <a href="javascript:;" id="switchwidth" onclick="widthauto(this)" title="{if widthauto()}{lang switch_narrow}{else}{lang switch_wide}{/if}" class="switchwidth"><!--{if widthauto()}-->{lang switch_narrow}<!--{else}-->{lang switch_wide}<!--{/if}--></a>
+            <!--{/if}-->
+            <!--{if $_G['uid'] && !empty($_G['style']['extstyle'])}--><a id="sslct" href="javascript:;" onmouseover="delayShow(this, function() {showMenu({'ctrlid':'sslct','pos':'34!'})});">{lang changestyle}</a><!--{/if}-->
+            <!--{if check_diy_perm($topic)}-->
+              $diynav
+            <!--{/if}-->
+          </div>
+        </div>
+      </div>
+    <!--{/if}-->
+    <!--{/if}-->
     <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
       <div class="navbar-header aside bg-info dk">
         <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
@@ -64,16 +118,7 @@
           </a>
         </li>
       </ul>
-      <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
-        <div class="form-group">
-          <div class="input-group">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
-            </span>
-            <input type="text" class="form-control input-sm no-border rounded" placeholder="Search songs, albums...">
-          </div>
-        </div>
-      </form>
+      <!--{subtemplate common/pubsearchform}-->
       <div class="navbar-right ">
         <!--{template common/header_userstatus}-->
       </div>      
@@ -406,8 +451,8 @@
           </section>
         </aside>
         <!-- /.aside -->
-<section id="content">
-	<section class="vbox">
-        <section class="scrollable wrapper-lg">
-			<div id="wp" class="wp">
+    <section id="content">
+    	<section class="vbox">
+            <section class="scrollable wrapper-lg">
+    			<div class="row">
 
