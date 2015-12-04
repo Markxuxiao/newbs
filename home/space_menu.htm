@@ -1,0 +1,415 @@
+<!--{if $space[uid]}-->
+
+
+
+
+
+<section class="hbox stretch">
+  <aside class="aside-lg bg-light lter b-r">
+    <section class="vbox">
+      <section class="scrollable">
+        <div class="wrapper">
+          <div class="text-center m-b m-t">
+          	<a class="thumb-lg" href="home.php?mod=space&uid=$space[uid]">
+          		<!--{avatar($space[uid],small)}-->
+          	</a>
+            <div>
+              <div class="h3 m-t-xs m-b-xs">{$space[username]}</div>
+              <small class="text-muted"><i class="fa fa-map-marker"></i> London, UK</small>
+            </div>                
+          </div>
+          <div class="panel wrapper">
+            <div class="row text-center">
+              <div class="col-xs-6">
+                <a href="#">
+                  <span class="m-b-xs h4 block">245</span>
+                  <small class="text-muted">Followers</small>
+                </a>
+              </div>
+              <div class="col-xs-6">
+                <a href="#">
+                  <span class="m-b-xs h4 block">55</span>
+                  <small class="text-muted">Following</small>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="btn-group btn-group-justified m-b">
+            <a class="btn btn-success btn-rounded" data-toggle="button">
+              <span class="text">
+                <i class="fa fa-eye"></i> Follow
+              </span>
+              <span class="text-active">
+                <i class="fa fa-eye"></i> Following
+              </span>
+            </a>
+            <a class="btn btn-dark btn-rounded">
+              <i class="fa fa-comment-o"></i> Chat
+            </a>
+          </div>
+          <div>
+            <small class="text-uc text-xs text-muted">about me</small>
+            <p>Artist</p>
+            <small class="text-uc text-xs text-muted">info</small>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.</p>
+            <div class="line"></div>
+            <small class="text-uc text-xs text-muted">connection</small>
+            <p class="m-t-sm">
+              <a href="#" class="btn btn-rounded btn-twitter btn-icon"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i class="fa fa-google-plus"></i></a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </aside>
+  <aside class="bg-white">
+    <section class="vbox">
+      <header class="header bg-light lt">
+        <ul class="nav nav-tabs nav-white">
+			<!--{if helper_access::check_module('follow')}-->
+			<li{if CURMODULE == 'follow'} class=""{/if}><a href="home.php?mod=follow&uid=$space[uid]&do=view&from=space">{lang follow}</a></li>
+			<!--{/if}-->
+			<li{if $do=='thread'} class=""{/if}><a href="home.php?mod=space&uid=$space[uid]&do=thread&view=me&from=space">{lang topic}</a></li>
+			<!--{if helper_access::check_module('blog')}-->
+			<li{if $do=='blog'} class=""{/if}><a href="home.php?mod=space&uid=$space[uid]&do=blog&view=me&from=space">{lang blog}</a></li>
+			<!--{/if}-->
+			<!--{if helper_access::check_module('album')}-->
+			<li{if $do=='album'} class=""{/if}><a href="home.php?mod=space&uid=$space[uid]&do=album&view=me&from=space">{lang album}</a></li>
+			<!--{/if}-->
+			<!--{if helper_access::check_module('doing')}-->
+			<li{if $do=='doing'} class=""{/if}><a href="home.php?mod=space&uid=$space[uid]&do=doing&view=me&from=space">{lang doing}</a></li>
+			<!--{/if}-->
+			<!--{if helper_access::check_module('home')}-->
+			<li{if $do=='home'} class=""{/if}><a href="home.php?mod=space&uid=$space[uid]&do=home&view=me&from=space">{lang feed}</a></li>
+			<!--{/if}-->
+			<!--{if helper_access::check_module('share')}-->
+			<li{if $do=='share'} class=""{/if}><a href="home.php?mod=space&uid=$space[uid]&do=share&view=me&from=space">{lang share}</a></li>
+			<!--{/if}-->
+			<!--{if helper_access::check_module('wall')}-->
+			<li{if $do==wall} class=""{/if}><a href="home.php?mod=space&uid=$space[uid]&do=wall&from=space">{lang message}</a></li>
+			<!--{/if}-->
+			<li{if $do==profile} class=""{/if}><a href="home.php?mod=space&uid=$space[uid]&do=profile&from=space">{lang memcp_profile}</a></li>
+
+
+
+
+          <li class="active"><a href="#activity" data-toggle="tab">主题</a></li>
+          <li class=""><a href="#events" data-toggle="tab">收藏</a></li>
+          <li class=""><a href="#interaction" data-toggle="tab">个人资料</a></li>
+        </ul>
+      </header>
+      <section class="scrollable">
+        <div class="tab-content">
+          <div class="tab-pane active" id="activity">
+            <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
+              <li class="list-group-item">
+                <a href="#" class="thumb-sm pull-left m-r-sm">
+                  <img src="images/a0.png" class="img-circle">
+                </a>
+                <a href="#" class="clear">
+                  <small class="pull-right">3 minuts ago</small>
+                  <strong class="block">Drew Wllon</strong>
+                  <small>Wellcome and play this web application template ... </small>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="thumb-sm pull-left m-r-sm">
+                  <img src="images/a1.png" class="img-circle">
+                </a>
+                <a href="#" class="clear">
+                  <small class="pull-right">1 hour ago</small>
+                  <strong class="block">Jonathan George</strong>
+                  <small>Morbi nec nunc condimentum...</small>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="thumb-sm pull-left m-r-sm">
+                  <img src="images/a2.png" class="img-circle">
+                </a>
+                <a href="#" class="clear">
+                  <small class="pull-right">2 hours ago</small>
+                  <strong class="block">Josh Long</strong>
+                  <small>Vestibulum ullamcorper sodales nisi nec...</small>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="thumb-sm pull-left m-r-sm">
+                  <img src="images/a3.png" class="img-circle">
+                </a>
+                <a href="#" class="clear">
+                  <small class="pull-right">1 day ago</small>
+                  <strong class="block">Jack Dorsty</strong>
+                  <small>Morbi nec nunc condimentum...</small>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="thumb-sm pull-left m-r-sm">
+                  <img src="images/a4.png" class="img-circle">
+                </a>
+                <a href="#" class="clear">
+                  <small class="pull-right">3 days ago</small>
+                  <strong class="block">Morgen Kntooh</strong>
+                  <small>Mobile first web app for startup...</small>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="thumb-sm pull-left m-r-sm">
+                  <img src="images/a5.png" class="img-circle">
+                </a>
+                <a href="#" class="clear">
+                  <small class="pull-right">Jun 21</small>
+                  <strong class="block">Yoha Omish</strong>
+                  <small>Morbi nec nunc condimentum...</small>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="thumb-sm pull-left m-r-sm">
+                  <img src="images/a6.png" class="img-circle">
+                </a>
+                <a href="#" class="clear">
+                  <small class="pull-right">May 10</small>
+                  <strong class="block">Gole Lido</strong>
+                  <small>Vestibulum ullamcorper sodales nisi nec...</small>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="thumb-sm pull-left m-r-sm">
+                  <img src="images/a7.png" class="img-circle">
+                </a>
+                <a href="#" class="clear">
+                  <small class="pull-right">Jan 2</small>
+                  <strong class="block">Jonthan Snow</strong>
+                  <small>Morbi nec nunc condimentum...</small>
+                </a>
+              </li>
+              <li class="list-group-item" href="#email-content" data-toggle="class:show">
+                <a href="#" class="thumb-sm pull-left m-r-sm">
+                  <img src="images/a8.png" class="img-circle">
+                </a>
+                <a href="#" class="clear">
+                  <small class="pull-right">3 minuts ago</small>
+                  <strong class="block">Drew Wllon</strong>
+                  <small>Vestibulum ullamcorper sodales nisi nec sodales nisi nec sodales nisi nec...</small>
+                </a>
+              </li>
+              <li class="list-group-item">
+                <a href="#" class="thumb-sm pull-left m-r-sm">
+                  <img src="images/a9.png" class="img-circle">
+                </a>
+                <a href="#" class="clear">
+                  <small class="pull-right">1 hour ago</small>
+                  <strong class="block">Jonathan George</strong>
+                  <small>Morbi nec nunc condimentum...</small>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-pane" id="events">
+            <div class="text-center wrapper">
+              <!--{subtemplate home/space_profile_body}-->
+            </div>
+          </div>
+          <div class="tab-pane" id="interaction">
+            <div class="text-center wrapper">
+              <!--{subtemplate home/space_profile_body}-->
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </aside>
+  <aside class="col-lg-3 b-l">
+    <section class="vbox">
+      <section class="scrollable padder-v">
+        <div class="panel">
+          <h4 class="font-thin padder">Latest Tweets</h4>
+          <ul class="list-group">
+            <li class="list-group-item">
+                <p>Wellcome <a href="#" class="text-info">@Drew Wllon</a> and play this web application template, have fun1 </p>
+                <small class="block text-muted"><i class="fa fa-clock-o"></i> 2 minuts ago</small>
+            </li>
+            <li class="list-group-item">
+                <p>Morbi nec <a href="#" class="text-info">@Jonathan George</a> nunc condimentum ipsum dolor sit amet, consectetur</p>
+                <small class="block text-muted"><i class="fa fa-clock-o"></i> 1 hour ago</small>
+            </li>
+            <li class="list-group-item">                     
+                <p><a href="#" class="text-info">@Josh Long</a> Vestibulum ullamcorper sodales nisi nec adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis</p>
+                <small class="block text-muted"><i class="fa fa-clock-o"></i> 2 hours ago</small>
+            </li>
+          </ul>
+        </div>
+        <div class="panel clearfix">
+          <div class="panel-body">
+            <a href="#" class="thumb pull-left m-r">
+              <img src="images/a0.png" class="img-circle">
+            </a>
+            <div class="clear">
+              <a href="#" class="text-info">@Mike Mcalidek <i class="fa fa-twitter"></i></a>
+              <small class="block text-muted">2,415 followers / 225 tweets</small>
+              <a href="#" class="btn btn-xs btn-success m-t-xs">Follow</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>              
+  </aside>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="uhd">
+
+	<!--{if CURMODULE == 'follow'}-->
+		<!--{subtemplate home/follow_user_header}-->
+	<!--{elseif !$space[self]}-->
+	<div class="mn">
+		<ul>
+			<!--{if helper_access::check_module('follow')}-->
+			<li class="addflw">
+				<!--{if !ckfollow($space['uid'])}-->
+					<a id="followmod" onclick="showWindow(this.id, this.href, 'get', 0);" href="home.php?mod=spacecp&ac=follow&op=add&hash={FORMHASH}&fuid=$space[uid]">{lang follow_add}TA</a>
+				<!--{else}-->
+					<a id="followmod" onclick="showWindow(this.id, this.href, 'get', 0);" href="home.php?mod=spacecp&ac=follow&op=del&fuid=$space[uid]">{lang follow_del}</a>
+				<!--{/if}-->
+			</li>
+			<!--{/if}-->
+			<li class="addf">
+				<!--{if !$isfriend}-->
+				<a href="home.php?mod=spacecp&ac=friend&op=add&uid=$space[uid]&handlekey=addfriendhk_{$space[uid]}" id="a_friend_li_{$space[uid]}" onclick="showWindow(this.id, this.href, 'get', 0);" class="xi2">{lang add_friend}</a>
+				<!--{else}-->
+				<a href="home.php?mod=spacecp&ac=friend&op=ignore&uid=$space[uid]&handlekey=ignorefriendhk_{$space[uid]}" id="a_ignore_{$space[uid]}" onclick="showWindow(this.id, this.href, 'get', 0);" class="xi2">{lang ignore_friend}</a>
+				<!--{/if}-->
+			</li>
+			<li class="pm2">
+				<a href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_$space[uid]&touid=$space[uid]&pmid=0&daterange=2" id="a_sendpm_$space[uid]" onclick="showWindow('showMsgBox', this.href, 'get', 0)" title="{lang send_pm}">{lang send_pm}</a>
+			</li>
+		</ul>
+		<!--{if helper_access::check_module('follow')}-->
+		<script type="text/javascript">
+		function succeedhandle_followmod(url, msg, values) {
+			var fObj = $('followmod');
+			if(values['type'] == 'add') {
+				fObj.innerHTML = '{lang follow_del}';
+				fObj.href = 'home.php?mod=spacecp&ac=follow&op=del&fuid='+values['fuid'];
+			} else if(values['type'] == 'del') {
+				fObj.innerHTML = '{lang follow_add}TA';
+				fObj.href = 'home.php?mod=spacecp&ac=follow&op=add&hash={FORMHASH}&fuid='+values['fuid'];
+			}
+		}
+		</script>
+		<!--{/if}-->
+	</div>
+	<!--{/if}-->
+	<div class="h cl">
+		<div class="icn avt"><a href="home.php?mod=space&uid=$space[uid]"><!--{avatar($space[uid],small)}--></a></div>
+		<h2 class="mt">
+			{$space[username]}
+			<!--{if isset($flag[$_G['uid']])}-->
+			<span class="xs1 xg1 xw0">
+				<span id="followbkame_{$uid}"><!--{if $flag[$_G['uid']]['bkname']}-->$flag[$_G['uid']]['bkname']<!--{/if}--></span>
+				<a href="home.php?mod=spacecp&ac=follow&op=bkname&fuid=$uid&handlekey=followbkame_$uid" id="fbkname_{$uid}" onclick="showWindow('followbkame_{$uid}', this.href, 'get', 0);"><!--{if $flag[$_G['uid']]['bkname']}-->[{lang follow_mod_bkname}]<!--{else}-->[{lang follow_add_bkname}]<!--{/if}--></a>
+			</span>
+			<!--{/if}-->
+		</h2>
+		<p>
+			<a href="{$_G[siteurl]}?$uid" class="xg1">{$_G[siteurl]}?$uid</a>
+			<!--{if checkperm('allowbanuser') || checkperm('allowedituser') || $_G[adminid] == 1}-->
+				<span class="pipe">|</span>
+					<!--{if checkperm('allowbanuser') || checkperm('allowedituser')}-->
+							<!--{if checkperm('allowbanuser')}-->
+							<a href="{if $_G[adminid] == 1}admin.php?action=members&operation=ban&username=$encodeusername&frames=yes{else}forum.php?mod=modcp&action=member&op=ban&uid=$space[uid]{/if}" id="usermanageli" onmouseover="showMenu(this.id)" class="showmenu" target="_blank">{lang member_manage}</a>
+							<!--{else}-->
+							<a href="{if $_G[adminid] == 1}admin.php?action=members&operation=search&username=$encodeusername&submit=yes&frames=yes{else}forum.php?mod=modcp&action=member&op=edit&uid=$space[uid]{/if}" id="usermanageli" onmouseover="showMenu(this.id)" class="showmenu" target="_blank">{lang member_manage}</a>
+							<!--{/if}-->
+					<!--{/if}-->
+					
+					<!--{if $_G[adminid] == 1}-->
+						<a href="forum.php?mod=modcp&action=thread&op=post&do=search&searchsubmit=1&users=$encodeusername" id="umanageli" onmouseover="showMenu(this.id)" class="showmenu">{lang content_manage}</a>
+					<!--{/if}-->
+				<!--{if checkperm('allowbanuser') || checkperm('allowedituser')}-->
+				<ul id="usermanageli_menu" class="p_pop" style="width: 80px; display:none;">
+					<!--{if checkperm('allowbanuser')}-->
+						<li><a href="{if $_G[adminid] == 1}admin.php?action=members&operation=ban&username=$encodeusername&frames=yes{else}forum.php?mod=modcp&action=member&op=ban&uid=$space[uid]{/if}" target="_blank">{lang user_ban}</a></li>
+					<!--{/if}-->
+					<!--{if checkperm('allowedituser')}-->
+						<li><a href="{if $_G[adminid] == 1}admin.php?action=members&operation=search&username=$encodeusername&submit=yes&frames=yes{else}forum.php?mod=modcp&action=member&op=edit&uid=$space[uid]{/if}" target="_blank">{lang user_edit}</a></li>
+					<!--{/if}-->
+				</ul>
+				<!--{/if}-->
+				<!--{if $_G['adminid'] == 1}-->
+					<ul id="umanageli_menu" class="p_pop" style="width: 80px; display:none;">
+						<li><a href="forum.php?mod=modcp&action=thread&op=post&searchsubmit=1&do=search&users=$encodeusername" target="_blank">{lang manage_post}</a></li>
+						<!--{if helper_access::check_module('doing')}-->
+							<li><a href="admin.php?action=doing&searchsubmit=1&detail=1&search=true&fromumanage=1&users=$encodeusername" target="_blank">{lang manage_doing}</a></li>
+						<!--{/if}-->
+						<!--{if helper_access::check_module('blog')}-->
+							<li><a href="admin.php?action=blog&searchsubmit=1&detail=1&search=true&fromumanage=1&uid=$space[uid]" target="_blank">{lang manage_blog}</a></li>
+						<!--{/if}-->
+						<!--{if helper_access::check_module('feed')}-->
+							<li><a href="admin.php?action=feed&searchsubmit=1&detail=1&fromumanage=1&uid=$space[uid]" target="_blank">{lang manage_feed}</a></li>
+						<!--{/if}-->
+						<!--{if helper_access::check_module('album')}-->
+							<li><a href="admin.php?action=album&searchsubmit=1&detail=1&search=true&fromumanage=1&uid=$space[uid]" target="_blank">{lang manage_album}</a></li>
+							<li><a href="admin.php?action=pic&searchsubmit=1&detail=1&search=true&fromumanage=1&users=$encodeusername" target="_blank">{lang manage_pic}</a></li>
+						<!--{/if}-->
+						<!--{if helper_access::check_module('wall')}-->
+							<li><a href="admin.php?action=comment&searchsubmit=1&detail=1&fromumanage=1&authorid=$space[uid]" target="_blank">{lang manage_comment}</a></li>
+						<!--{/if}-->
+						<!--{if helper_access::check_module('share')}-->
+							<li><a href="admin.php?action=share&searchsubmit=1&detail=1&search=true&fromumanage=1&uid=$space[uid]" target="_blank">{lang manage_share}</a></li>
+						<!--{/if}-->
+						<!--{if helper_access::check_module('group')}-->
+							<li><a href="admin.php?action=threads&operation=group&searchsubmit=1&detail=1&search=true&fromumanage=1&users=$encodeusername" target="_blank">{lang manage_group_threads}</a></li>
+							<li><a href="admin.php?action=prune&searchsubmit=1&detail=1&operation=group&fromumanage=1&users=$encodeusername" target="_blank">{lang manage_group_prune}</a></li>
+						<!--{/if}-->
+					</ul>
+				<!--{/if}-->
+			<!--{/if}-->
+		</p>
+	</div>
+	
+	<!--{hook/space_menu_extra}-->
+	<ul class="tb cl" style="padding-left: 75px;">
+		<!--{if helper_access::check_module('follow')}-->
+		<li{if CURMODULE == 'follow'} class="a"{/if}><a href="home.php?mod=follow&uid=$space[uid]&do=view&from=space">{lang follow}</a></li>
+		<!--{/if}-->
+		<li{if $do=='thread'} class="a"{/if}><a href="home.php?mod=space&uid=$space[uid]&do=thread&view=me&from=space">{lang topic}</a></li>
+		<!--{if helper_access::check_module('blog')}-->
+		<li{if $do=='blog'} class="a"{/if}><a href="home.php?mod=space&uid=$space[uid]&do=blog&view=me&from=space">{lang blog}</a></li>
+		<!--{/if}-->
+		<!--{if helper_access::check_module('album')}-->
+		<li{if $do=='album'} class="a"{/if}><a href="home.php?mod=space&uid=$space[uid]&do=album&view=me&from=space">{lang album}</a></li>
+		<!--{/if}-->
+		<!--{if helper_access::check_module('doing')}-->
+		<li{if $do=='doing'} class="a"{/if}><a href="home.php?mod=space&uid=$space[uid]&do=doing&view=me&from=space">{lang doing}</a></li>
+		<!--{/if}-->
+		<!--{if helper_access::check_module('home')}-->
+		<li{if $do=='home'} class="a"{/if}><a href="home.php?mod=space&uid=$space[uid]&do=home&view=me&from=space">{lang feed}</a></li>
+		<!--{/if}-->
+		<!--{if helper_access::check_module('share')}-->
+		<li{if $do=='share'} class="a"{/if}><a href="home.php?mod=space&uid=$space[uid]&do=share&view=me&from=space">{lang share}</a></li>
+		<!--{/if}-->
+		<!--{if helper_access::check_module('wall')}-->
+		<li{if $do==wall} class="a"{/if}><a href="home.php?mod=space&uid=$space[uid]&do=wall&from=space">{lang message}</a></li>
+		<!--{/if}-->
+		<li{if $do==profile} class="a"{/if}><a href="home.php?mod=space&uid=$space[uid]&do=profile&from=space">{lang memcp_profile}</a></li>
+	</ul>
+</div>
+<!--{/if}-->
